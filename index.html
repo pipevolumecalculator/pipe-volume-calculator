@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pipe Volume Calculator (Demo)</title>
+
+<meta name="description" content="Simple pipe volume calculator demo built with HTML and JavaScript.">
+
+<style>
+
+body{
+font-family:Arial, sans-serif;
+background:#f4f6f9;
+margin:0;
+padding:40px;
+display:flex;
+justify-content:center;
+}
+
+.wrapper{
+max-width:500px;
+width:100%;
+background:#fff;
+padding:30px;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+h1{
+margin-top:0;
+color:#333;
+}
+
+p{
+color:#666;
+font-size:14px;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:10px;
+border:1px solid #ddd;
+border-radius:6px;
+font-size:16px;
+}
+
+button{
+margin-top:15px;
+width:100%;
+padding:12px;
+border:none;
+background:#3B6DF6;
+color:white;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#2F56E0;
+}
+
+.result{
+margin-top:20px;
+padding:15px;
+background:#f7f7f7;
+border-radius:6px;
+}
+
+.footer{
+margin-top:25px;
+font-size:13px;
+color:#777;
+}
+
+.footer a{
+color:#3B6DF6;
+text-decoration:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<h1>Pipe Volume Calculator</h1>
+
+<p>This is a simple demo calculator built using HTML and JavaScript.</p>
+
+<input type="number" id="diameter" placeholder="Pipe Diameter">
+<input type="number" id="length" placeholder="Pipe Length">
+
+<button onclick="calculate()">Calculate Volume</button>
+
+<div id="result" class="result" style="display:none;"></div>
+
+<h2>Pipe Volume Formula</h2>
+
+<p>
+Volume is calculated using:
+</p>
+
+<p><b>V = π × r² × L</b></p>
+
+<p>
+r = pipe radius<br>
+L = pipe length
+</p>
+
+<div class="footer">
+
+For a more advanced calculator and engineering tools visit:<br>
+
+<a href="https://pipevolumecalculator.com" target="_blank">
+pipevolumecalculator.com
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+function calculate(){
+
+let diameter=parseFloat(document.getElementById("diameter").value);
+let length=parseFloat(document.getElementById("length").value);
+
+if(!diameter || !length){
+alert("Enter valid values");
+return;
+}
+
+let radius=diameter/2;
+
+let cubic= Math.PI*Math.pow(radius,2)*length;
+
+let gallons=cubic*7.48052;
+let litres=cubic*28.3168;
+let m3=cubic*0.0283168;
+
+document.getElementById("result").style.display="block";
+
+document.getElementById("result").innerHTML=
+
+"<b>Results</b><br><br>"+
+"Cubic Feet: "+cubic.toFixed(4)+"<br>"+
+"Gallons: "+gallons.toFixed(2)+"<br>"+
+"Litres: "+litres.toFixed(2)+"<br>"+
+"Cubic Meters: "+m3.toFixed(4);
+
+}
+
+</script>
+
+</body>
+</html>
